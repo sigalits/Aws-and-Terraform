@@ -2,23 +2,6 @@ provider "aws" {
   version = "2.25"
   region = var.aws_region
 }
-#resource "aws_ebs_volume" "vol1" {
-#  size = var.ebs_data_size
-#  type = var.ebs_data_type
-#  encrypted = "true"
-#  tags = {
-#    name = "${var.tag_name1}-ebs"
-#  }
-#}
-#resource "aws_ebs_volume" "vol2" {
-#  size = var.ebs_data_size
-#  type = var.ebs_data_type
-#  encrypted = "true"
-#  tags = {
-#    name = "${var.tag_name2}-ebs"
-#  }
-#}
-
 
 #Create security group with firewall rules
 resource "aws_security_group" "opsschool-ngnix-sg" {
@@ -114,16 +97,6 @@ resource "aws_instance" "opsschool_2" {
     application = "Whiskey"
   }
 }
-#resource "aws_volume_attachment" "vol_att1" {
-#  device_name = "/dev/sdd"
-#  instance_id = "${aws_instance.opsschool_1.id}"
-#  volume_id = "${aws_ebs_volume.vol1.id}"
-#}
-#resource "aws_volume_attachment" "vol_att2" {
-#  device_name = "/dev/sdd"
-#  instance_id = "${aws_instance.opsschool_2.id}"
-#  volume_id = "${aws_ebs_volume.vol2.id}"
-#}
 
 output "ec2_public_ip_instance_1" {
   value = "${aws_instance.opsschool_1.*.public_ip}"
