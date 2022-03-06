@@ -26,5 +26,5 @@ region = us-east-1
 EOF
 
 # shellcheck disable=SC1073
-(crontab -l 2>/dev/null && echo "@hourly  aws s3 cp /var/log/nginx/access.log s3://whiesky-nginx-log/") | crontab -
-(crontab -l 2>/dev/null && echo "@hourly  aws s3 cp /var/log/nginx/access.log s3://whiesky-nginx-log/") | crontab -
+(crontab -l 2>/dev/null && echo "@hourly  aws s3 cp /var/log/nginx/access.log s3://whiesky-nginx-log/\${HOSTNAME}_access.log") | crontab -
+(crontab -l 2>/dev/null && echo "@hourly  aws s3 cp /var/log/nginx/access.log s3://whiesky-nginx-log/\${HOSTNAME}_access.log") | crontab -
