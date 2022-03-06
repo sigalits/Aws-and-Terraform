@@ -2,10 +2,6 @@
 echo "Installing nginx"
 sudo yum install -y epel-release
 sudo yum update -y
-#sudo yum install nginx -y
-#echo "<h1>Welcome to Grandpa's Whiskey </h1>" | sudo tee /usr/share/nginx/html/index.html
-#sudo systemctl start nginx
-#sudo systemctl enable nginx
 echo "Mount /data"
 sudo mkfs -t xfs /dev/nvme1n1
 sudo mkdir /data
