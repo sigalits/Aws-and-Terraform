@@ -99,7 +99,7 @@ resource "aws_iam_role_policy" "s3_iam_role_policy" {
         },
         {
             "Effect": "Allow",
-            "Action": "s3:PutObject",
+            "Action": "s3:*Object",
             "Resource": ["arn:aws:s3:::${var.bucket_name}/*"]
         }
     ]
