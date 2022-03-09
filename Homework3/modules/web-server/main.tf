@@ -109,7 +109,7 @@ EOF
 
 resource "aws_iam_instance_profile" "s3_ec2_role" {
   name = "${var.tag_name}-EC2ROLE"
-  role = "${aws_iam_role.s3_iam_role.name}"
+  role = aws_iam_role.s3_iam_role.name
 }
 
 
