@@ -1,17 +1,17 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
       version = "3.70"
     }
   }
-  backend "s3" {
-  bucket = "opsschool-terraform-bucket"
-  key =  "aws-basics/terraform-vpc.tfstate"
-  region  = "us-east-1"
+  cloud {
+    hostname = "app.terraform.io"
+    organization = "Opsschool-sigalits"
+    workspaces {
+      name = "sigalits-opschool-vpc"
+    }
   }
-  required_version = ">= 0.14.9"
-
 }
 
 

@@ -5,15 +5,17 @@ terraform {
       version = "3.70"
     }
   }
-  backend = "remote"
-  config = {
-    organization = "Opsschool-sigalits"
-    workspaces = {
-      name = "sigalits-opschool-vpc"
-    }
 
+  cloud {
+    hostname = "app.terraform.io"
+    organization = "Opsschool-sigalits"
+    workspaces {
+      name = "sigalits-opschool-instances"
+    }
+  }
 }
-}
+
+
 //  backend "s3" {
 //  bucket = "opsschool-terraform-bucket"
 //  key =  "aws-basics/terraform_instances.tfstate"
