@@ -3,7 +3,8 @@
 .terraform/*
 .terraform*
 /.terraform
-
+VPC/tfc-getting-started/
+VPC/tfc-getting-started/*
 # .tfstate files
 *.tfstate
 *.tfstate.*
