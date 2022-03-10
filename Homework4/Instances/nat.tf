@@ -25,7 +25,7 @@ resource "aws_nat_gateway" "natgw" {
  }
 
 resource "aws_route_table" "database" {
-  count = length([data.terraform_remote_state.vpc.outputs.database_subnets[*].id])
+  count = length(data.terraform_remote_state.vpc.outputs.database_subnets[*].id)
   vpc_id = data.aws_vpc.vpc.id
   tags =  {
       "Name" = "${var.tag_name}-database-${count.index}"
@@ -34,7 +34,7 @@ resource "aws_route_table" "database" {
 
 
 resource "aws_route" "database_nat_gateway" {
-  count = length([data.terraform_remote_state.vpc.outputs.database_subnets[*].id])
+  count = length(data.terraform_remote_state.vpc.outputs.database_subnets[*].id)
   route_table_id         = aws_route_table.database[count.index].id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = element(aws_nat_gateway.natgw.*.id, count.index)
@@ -44,7 +44,7 @@ resource "aws_route" "database_nat_gateway" {
   }
 }
 resource "aws_route_table_association" "nat_gateway" {
-  count = length([data.terraform_remote_state.vpc.outputs.database_subnets[*].id])
+  count = length(data.terraform_remote_state.vpc.outputs.database_subnets[*].id)
   subnet_id = data.terraform_remote_state.vpc.outputs.database_subnets[count.index].id
   route_table_id = aws_route_table.database[count.index].id
 }
