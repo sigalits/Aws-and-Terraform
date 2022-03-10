@@ -20,13 +20,15 @@ data "aws_vpc"  "vpc" {
 }
 
 data "terraform_remote_state" "vpc" {
-  backend = "s3"
+  backend = "remote"
   config = {
-    bucket = "opsschool-terraform-bucket"
-    key    = "aws-basics/terraform-vpc.tfstate"
-    region = var.aws_region
+    organization = "Opsschool-sigalits"
+    workspaces = {
+      name = "sigalits-opschool-vpc"
+    }
   }
 }
+
 //output "terraform_state" {
 //  value = data.terraform_remote_state.vpc
 //}
