@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "db_out" {
 
 
 resource "aws_instance" "this" {
-  count = var.db_instance_count
+  count = var.create_dbservers ? var.db_instance_count: 0
   ami = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type

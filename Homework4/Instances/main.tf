@@ -18,10 +18,14 @@ module "web-server" {
   tag_name = format("%s", "${var.tag_name}_ngnix")
   acl_value = var.acl_value
   bucket_name = var.bucket_name
+  force_destroy = var.force_destroy
+  create_webservers = var.create_webservers
 }
 
 module "database" {
-  source = "../modules/db-server"
+  source  = "app.terraform.io/Opsschool-sigalits/dbserver/aws"
+  version = "1.1.0"
+#  source = "../modules/db-server"
   db_instance_count = var.db_instance_count
   ami_id = data.aws_ami.ubuntu-18.id
   key_name = var.key_name

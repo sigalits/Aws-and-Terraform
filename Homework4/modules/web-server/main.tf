@@ -53,6 +53,7 @@ resource "aws_security_group_rule" "ngnix_out" {
 resource "aws_s3_bucket" "logs_bucket" {
     bucket = lower(var.bucket_name)
     acl = var.acl_value
+    force_destroy = var.force_destroy
 
   tags = {"Name" = var.bucket_name}
  }
@@ -111,7 +112,7 @@ resource "aws_iam_instance_profile" "s3_ec2_role" {
 
 
 resource "aws_instance" "this" {
-  count = var.ngnix_instance_count
+  count = var.create_webservers ? var.ngnix_instance_count : 0
   ami  = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type

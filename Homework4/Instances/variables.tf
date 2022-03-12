@@ -35,6 +35,21 @@ variable "key_name" {
     default     = "sigalits-ops"
 }
 
+variable "force_destroy" {
+  description = "to enable force destory on s3 bucket"
+  type = bool
+  default = false
+}
+
+variable "create_webservers" {
+  description = "do we want to create web servers now?"
+  type = bool
+}
+
+variable "create_dbservers" {
+  description = "do we want to create db servers now?"
+  type = bool
+}
 
 variable "instance_type" {
     description = "instance type for ec2"

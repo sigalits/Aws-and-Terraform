@@ -12,6 +12,16 @@ variable "vpc_cidr" {
   type = string
 }
 
+variable "force_destroy" {
+  description = "to enable force destory on s3 bucket"
+  type = bool
+}
+
+variable "create_webservers" {
+  description = "do we want to create web servers now?"
+  type = bool
+}
+
 
 variable "ngnix_instance_count" {
   description = "Instance servers"

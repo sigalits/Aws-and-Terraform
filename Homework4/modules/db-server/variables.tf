@@ -18,6 +18,12 @@ variable "db_instance_count" {
        default     = 2
 }
 
+variable "create_dbservers" {
+  description = "do we want to create db servers now?"
+  type = bool
+}
+
+
 variable "az" {
   description = "avaliabilty zone"
   type = list(string)
